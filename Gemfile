@@ -9,11 +9,11 @@ group :db do
   gem "dm-migrations", ">= 1.0"
   gem "dm-validations", ">= 1.0"
   gem "dm-aggregates", ">= 1.0"
-  gem "dm-sqlite-adapter", ">= 1.0"
+  gem "dm-sqlite-adapter", ">= 1.0"    
+  gem "mongo_mapper", ">= 0.11.0" 
 end
 
 group :development do
-  gem "rcov"
   gem "jeweler"
   gem "rake",  ">= 0.8.7"
   gem "mocha", ">= 0.9.8"
@@ -24,12 +24,16 @@ group :development do
   gem "phocus"
   gem "shoulda", ">= 2.10.3"
   gem "uuid", ">= 2.3.1"
-  gem "bcrypt-ruby", :require => "bcrypt"
-  platforms :mri_18 do
+  gem "bcrypt-ruby", :require => "bcrypt"   
+  gem "tzinfo"
+  gem 'mongomapper_ext', :git => "git://github.com/bookworm/mongomapper_ext.git" 
+  platforms :mri_18 do    
+    gem "rcov"
     gem "ruby-prof", ">= 0.9.1"
     gem "system_timer", ">= 1.0"
   end
-  platforms :mri do
+  platforms :mri do    
+    gem "simplecov", ">= 0.0.1"
     gem "memcached", ">= 0.20.1"
     gem 'dalli',     ">=1.0.2"
   end

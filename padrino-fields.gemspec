@@ -27,12 +27,13 @@ Gem::Specification.new do |s|
     "lib/padrino-fields.rb",
     "lib/padrino-fields/form_builder.rb",
     "lib/padrino-fields/form_helpers.rb",
-    "lib/padrino-fields/orms/datamapper.rb",
+    "lib/padrino-fields/orms/datamapper.rb", 
+    "lib/padrino-fields/orms/mongomapper.rb",
     "lib/padrino-fields/settings.rb",
     "load_paths.rb",
     "padrino-fields.gemspec",
-    "test/.DS_Store",
-    "test/fixtures/datamapper/app.rb",
+    "test/fixtures/datamapper/app.rb",    
+    "test/fixtures/mongomapper/app.rb",
     "test/fixtures/datamapper/views/capture_concat.erb",
     "test/fixtures/datamapper/views/capture_concat.haml",
     "test/fixtures/datamapper/views/content_for.erb",
@@ -52,8 +53,10 @@ Gem::Specification.new do |s|
     "test/fixtures/datamapper/views/meta_tag.erb",
     "test/fixtures/datamapper/views/meta_tag.haml",
     "test/helper.rb",
-    "test/test_datamapper.rb",
-    "test/test_form_builder.rb",
+    "test/test_datamapper.rb",   
+    "test/test_mongomapper.rb",
+    "test/test_form_builder_datamapper.rb",   
+    "test/test_form_builder_mongomapper.rb",
     "test/test_form_helpers.rb",
     "test/test_settings.rb"
   ]
@@ -63,10 +66,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Advanced form helpers for Padrino framework}
   s.test_files = [
-    "test/fixtures/datamapper/app.rb",
+    "test/fixtures/datamapper/app.rb",  
+    "test/fixtures/mongomapper/app.rb",
     "test/helper.rb",
-    "test/test_datamapper.rb",
-    "test/test_form_builder.rb",
+    "test/test_datamapper.rb",   
+    "test/test_mongomapper.rb",
+    "test/test_form_builder_datamapper.rb",   
+    "test/test_form_builder_mongomapper.rb",
     "test/test_form_helpers.rb",
     "test/test_settings.rb"
   ]
@@ -79,7 +85,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<padrino>, [">= 0"])
       s.add_runtime_dependency(%q<padrino-core>, [">= 0"])
       s.add_runtime_dependency(%q<padrino-helpers>, [">= 0"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<rcov>, [">= 0"]) if RUBY_VERSION < "1.9"  
+      s.add_development_dependency(%q<simplecov>, [">= 0"]) if RUBY_VERSION > "1.9"  
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rake>, [">= 0.8.7"])
       s.add_development_dependency(%q<mocha>, [">= 0.9.8"])
@@ -99,7 +106,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<padrino>, [">= 0"])
       s.add_dependency(%q<padrino-core>, [">= 0"])
       s.add_dependency(%q<padrino-helpers>, [">= 0"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<rcov>, [">= 0"]) if RUBY_VERSION < "1.9"  
+      s.add_dependency(%q<simplecov>, [">= 0"]) if RUBY_VERSION > "1.9"  
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0.8.7"])
       s.add_dependency(%q<mocha>, [">= 0.9.8"])
@@ -120,7 +128,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<padrino>, [">= 0"])
     s.add_dependency(%q<padrino-core>, [">= 0"])
     s.add_dependency(%q<padrino-helpers>, [">= 0"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<rcov>, [">= 0"]) if RUBY_VERSION < "1.9"  
+    s.add_dependency(%q<simplecov>, [">= 0"]) if RUBY_VERSION > "1.9"   
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rake>, [">= 0.8.7"])
     s.add_dependency(%q<mocha>, [">= 0.9.8"])
@@ -138,4 +147,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<dalli>, [">= 1.0.2"])
   end
 end
-

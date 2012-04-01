@@ -19,6 +19,7 @@ require 'padrino-helpers'
 require 'webrat'
 require 'mocha'
 require 'phocus'
+require 'mongo_mapper'
 require 'dm-core'
 require 'dm-validations'
 require 'dm-migrations'
@@ -36,8 +37,9 @@ rescue LoadError
   require 'active_support/time'
 end
 
-require File.expand_path(File.dirname(__FILE__) + '/fixtures/datamapper/app')
 require File.expand_path("../padrino-fields/lib/padrino-fields")
+require File.expand_path(File.dirname(__FILE__) + '/fixtures/datamapper/app')   
+require File.expand_path(File.dirname(__FILE__) + '/fixtures/mongomapper/app')
 
 class Test::Unit::TestCase
   include PadrinoFields::Settings
@@ -97,7 +99,7 @@ class Test::Unit::TestCase
     $stdout = orig_stdout
     log_buffer.rewind && log_buffer.read
   end
-
+  
   # Asserts that a file matches the pattern
   def assert_match_in_file(pattern, file)
     assert File.exist?(file), "File '#{file}' does not exist!"

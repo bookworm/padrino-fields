@@ -1,6 +1,7 @@
 require 'padrino-helpers'
 require File.expand_path(File.dirname(__FILE__) + '/form_helpers')
-require File.expand_path(File.dirname(__FILE__) + '/orms/datamapper') if defined?(DataMapper)
+require File.expand_path(File.dirname(__FILE__) + '/orms/datamapper') if defined?(DataMapper)   
+require File.expand_path(File.dirname(__FILE__) + '/orms/mongomapper') if defined?(MongoMapper)
 require File.expand_path(File.dirname(__FILE__) + '/settings')
 
 module Padrino
@@ -9,7 +10,8 @@ module Padrino
       class PadrinoFieldsBuilder < AbstractFormBuilder #:nodoc:
         
         include PadrinoFields::Settings
-        include PadrinoFields::DataMapperWrapper if defined?(DataMapper)
+        include PadrinoFields::DataMapperWrapper if defined?(DataMapper)      
+        include PadrinoFields::MongoMapperWrapper if defined?(MongoMapper)
         
         @@settings = PadrinoFields::Settings
         
