@@ -28,7 +28,12 @@ module PadrinoFields
       end
 
       def form_column_type_for(attribute)     
-        klass = keys.find_all {|p| p[0].to_sym == attribute}[0][1].type
+        klass = keys.find_all {|p| p[0].to_sym == attribute}     
+        
+        # TODO Throw Error here 
+        return nil if klass.length == 0
+        klass = klass[0][1].type    
+            
         if klass == String
           :string    
         elsif klass == Text
