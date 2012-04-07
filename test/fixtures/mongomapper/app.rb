@@ -3,8 +3,6 @@ require 'mongo_mapper'
 require 'mongomapper_ext'
 require 'haml'   
 
-puts 'does the a pp get loaded first maybe?'
-
 class MongoMapperDemo < Sinatra::Base
   register Padrino::Helpers
   configure do
